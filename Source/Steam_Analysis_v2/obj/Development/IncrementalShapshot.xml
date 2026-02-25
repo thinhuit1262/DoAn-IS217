@@ -1,0 +1,89 @@
+﻿<DeploymentSnapshot xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ddl2="http://schemas.microsoft.com/analysisservices/2003/engine/2" xmlns:ddl2_2="http://schemas.microsoft.com/analysisservices/2003/engine/2/2" xmlns:ddl100_100="http://schemas.microsoft.com/analysisservices/2008/engine/100/100" xmlns:ddl200="http://schemas.microsoft.com/analysisservices/2010/engine/200" xmlns:ddl200_200="http://schemas.microsoft.com/analysisservices/2010/engine/200/200" xmlns:ddl300="http://schemas.microsoft.com/analysisservices/2011/engine/300" xmlns:ddl300_300="http://schemas.microsoft.com/analysisservices/2011/engine/300/300" xmlns:ddl400="http://schemas.microsoft.com/analysisservices/2012/engine/400" xmlns:ddl400_400="http://schemas.microsoft.com/analysisservices/2012/engine/400/400" xmlns:ddl500="http://schemas.microsoft.com/analysisservices/2013/engine/500" xmlns:ddl500_500="http://schemas.microsoft.com/analysisservices/2013/engine/500/500" xmlns:dwd="http://schemas.microsoft.com/DataWarehouse/Designer/1.0">
+  <Target>
+    <Database>Steam_Analysis_v2</Database>
+    <Server>.\SQL2022</Server>
+    <ConnectionString>Data Source=.\SQL2022;Timeout=0</ConnectionString>
+  </Target>
+  <Options>
+    <TransactionalDeployment>false</TransactionalDeployment>
+    <PartitionDeployment>DeployPartitions</PartitionDeployment>
+    <RoleDeployment>DeployRolesRetainMembers</RoleDeployment>
+    <ProcessingOption>DoNotProcess</ProcessingOption>
+    <OutputScript></OutputScript>
+    <ImpactAnalysisFile></ImpactAnalysisFile>
+    <ConfigurationSettingsDeployment>Deploy</ConfigurationSettingsDeployment>
+    <OptimizationSettingsDeployment>Deploy</OptimizationSettingsDeployment>
+    <WriteBackTableCreation>UseExisting</WriteBackTableCreation>
+  </Options>
+  <Snapshot>
+    <ObjectSnapshots>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.RelationalDataSource</Type>
+        <TimeStamp>lRo3Hjy06UCvNGNlr8FKrugPLyw=1/7/2026 3:01:53 PM1/7/2026 3:01:53 PM</TimeStamp>
+        <ID>
+          <String>Steam DW v2</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.DataSourceView</Type>
+        <TimeStamp>uKDmMyEMrytJALv+DukVQfODHLM=1/7/2026 6:54:38 PM1/7/2026 3:36:30 PM</TimeStamp>
+        <ID>
+          <String>Steam_DW_v2</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>42rTJqe0jIicmphNAXabhBeMMIo=1/9/2026 9:54:09 PM1/7/2026 4:02:37 PM</TimeStamp>
+        <ID>
+          <String>Dim Time</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>iLWtyiKxIqNx0HpmOZRScRSqQkE=1/9/2026 12:50:13 PM1/7/2026 6:54:38 PM</TimeStamp>
+        <ID>
+          <String>Dim Game Info</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>47t1VDt3aFkEUWivAWUZw7cRE/I=1/8/2026 4:08:48 AM1/7/2026 6:54:38 PM</TimeStamp>
+        <ID>
+          <String>Dim Developer</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>r6Kw/ADx4pLg2GBKXg3MK98Om9s=1/11/2026 7:47:51 PM1/7/2026 6:54:38 PM</TimeStamp>
+        <ID>
+          <String>Dim Publisher</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Dimension</Type>
+        <TimeStamp>j8wpVskwn+tusM/B17Tlv5ZIkN0=1/8/2026 1:37:40 AM1/7/2026 6:54:38 PM</TimeStamp>
+        <ID>
+          <String>Dim Genre</String>
+        </ID>
+      </ObjectSnapshot>
+      <ObjectSnapshot>
+        <Type>Microsoft.AnalysisServices.Cube</Type>
+        <TimeStamp>U6VRhUbtIGaQbL7AdaDQXU7gT14=1/11/2026 7:47:51 PM1/7/2026 6:54:37 PMZQYZaJhCaewQDjmv5XBelMVpa90=1/7/2026 6:54:38 PM1/7/2026 6:54:38 PM</TimeStamp>
+        <ID>
+          <String>Steam_Analysis_v2</String>
+        </ID>
+      </ObjectSnapshot>
+    </ObjectSnapshots>
+    <DatabaseSnapshot>
+      <Type>Microsoft.AnalysisServices.Database</Type>
+      <TimeStamp>+StCSFMJffxbaP3nYTPQao47RcY=1/7/2026 2:46:11 PM1/7/2026 2:46:10 PM</TimeStamp>
+      <ID>
+        <String>Steam_Analysis_v2</String>
+      </ID>
+    </DatabaseSnapshot>
+    <Granularity>Coarse</Granularity>
+  </Snapshot>
+  <AssemblyLocations />
+  <ProcessingComplete>true</ProcessingComplete>
+  <LastDeployed>2026-01-11T12:47:57.18Z</LastDeployed>
+</DeploymentSnapshot>

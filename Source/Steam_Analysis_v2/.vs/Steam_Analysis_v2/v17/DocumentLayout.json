@@ -1,0 +1,86 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Learn_OLAP\\Do_An\\SSAS\\Steam_Analysis_v2\\Steam_Analysis_v2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{07C38AE5-966C-A2A8-55E3-1B461D388CD3}|Steam_Analysis_v2.dwproj|D:\\Learn_OLAP\\Do_An\\SSAS\\Steam_Analysis_v2\\Steam_Analysis_v2\\Steam_Analysis_v2.cube||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
+      "RelativeMoniker": "D:0:0:{07C38AE5-966C-A2A8-55E3-1B461D388CD3}|Steam_Analysis_v2.dwproj|solutionrelative:Steam_Analysis_v2.cube||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07C38AE5-966C-A2A8-55E3-1B461D388CD3}|Steam_Analysis_v2.dwproj|D:\\Learn_OLAP\\Do_An\\SSAS\\Steam_Analysis_v2\\Steam_Analysis_v2\\Dim Game Info.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
+      "RelativeMoniker": "D:0:0:{07C38AE5-966C-A2A8-55E3-1B461D388CD3}|Steam_Analysis_v2.dwproj|solutionrelative:Dim Game Info.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{07C38AE5-966C-A2A8-55E3-1B461D388CD3}|Steam_Analysis_v2.dwproj|D:\\Learn_OLAP\\Do_An\\SSAS\\Steam_Analysis_v2\\Steam_Analysis_v2\\Dim Time.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design",
+      "RelativeMoniker": "D:0:0:{07C38AE5-966C-A2A8-55E3-1B461D388CD3}|Steam_Analysis_v2.dwproj|solutionrelative:Dim Time.dim||{B4191D15-2D32-45F2-906F-E91BBAAA6059}|Design"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Dim Game Info.dim [Design]",
+              "DocumentMoniker": "D:\\Learn_OLAP\\Do_An\\SSAS\\Steam_Analysis_v2\\Steam_Analysis_v2\\Dim Game Info.dim",
+              "RelativeDocumentMoniker": "Dim Game Info.dim",
+              "ToolTip": "D:\\Learn_OLAP\\Do_An\\SSAS\\Steam_Analysis_v2\\Steam_Analysis_v2\\Dim Game Info.dim [Design]",
+              "RelativeToolTip": "Dim Game Info.dim [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-01-11T08:43:49.421Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Dim Time.dim [Design]",
+              "DocumentMoniker": "D:\\Learn_OLAP\\Do_An\\SSAS\\Steam_Analysis_v2\\Steam_Analysis_v2\\Dim Time.dim",
+              "RelativeDocumentMoniker": "Dim Time.dim",
+              "ToolTip": "D:\\Learn_OLAP\\Do_An\\SSAS\\Steam_Analysis_v2\\Steam_Analysis_v2\\Dim Time.dim [Design]",
+              "RelativeToolTip": "Dim Time.dim [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-01-09T05:50:50.085Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Steam_Analysis_v2.cube [Design]",
+              "DocumentMoniker": "D:\\Learn_OLAP\\Do_An\\SSAS\\Steam_Analysis_v2\\Steam_Analysis_v2\\Steam_Analysis_v2.cube",
+              "RelativeDocumentMoniker": "Steam_Analysis_v2.cube",
+              "ToolTip": "D:\\Learn_OLAP\\Do_An\\SSAS\\Steam_Analysis_v2\\Steam_Analysis_v2\\Steam_Analysis_v2.cube [Design]*",
+              "RelativeToolTip": "Steam_Analysis_v2.cube [Design]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
+              "WhenOpened": "2026-01-07T13:16:26.978Z",
+              "EditorCaption": " [Design]"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

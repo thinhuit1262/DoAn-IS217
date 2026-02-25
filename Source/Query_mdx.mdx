@@ -1,0 +1,185 @@
+﻿--	CÂU 1: Thống kê Tổng doanh thu và Số lượng người sở hữu theo từng Thể loại Game.
+SELECT 
+	{[Measures].[Total Revenue], [Measures].[Total Owners]} ON COLUMNS,
+	NON EMPTY [Dim Genre].[Genre Name].CHILDREN ON ROWS
+FROM [Steam_Analysis_v2]
+
+--CÂU 2: Liệt kê 5 Game có tổng doanh thu cao nhất (Sắp xếp giảm dần).
+SELECT [Measures].[Total Revenue] ON COLUMNS,
+	TOPCOUNT([Dim Game Info].[Game Name].CHILDREN, 5, [Measures].[Total Revenue]) ON ROWS
+FROM [Steam_Analysis_v2]
+
+--CÂU 3: Liệt kê doanh thu các Game trong năm 2023, sắp xếp giảm dần.
+SELECT  [Measures].[Total Revenue] ON COLUMNS,
+	ORDER([Dim Game Info].[Game Name].CHILDREN, [Measures].[Total Revenue], DESC) ON ROWS
+FROM [Steam_Analysis_v2]
+WHERE [Dim Time].[Year].&[2023]
+
+--CÂU 4: Liệt kê các Game có tổng doanh thu lớn hơn 10.000.000 USD.	
+SELECT [Measures].[Total Revenue] ON COLUMNS,
+FILTER ([Dim Game Info].[Game Name].CHILDREN,  [Measures].[Total Revenue] > 10000000) ON ROWS
+FROM [Steam_Analysis_v2]
+
+--CÂU 5: Tìm Top 3 Game có doanh thu cao nhất của 3 Nhà phát triển: Valve, Ubisoft và Capcom.
+SELECT [Measures].[Total Revenue] ON COLUMNS,
+GENERATE(
+	{[Dim Developer].[Dev Name].&[Valve],
+	 [Dim Developer].[Dev Name].&[Ubisoft],
+	 [Dim Developer].[Dev Name].&[Capcom]},
+	 TOPCOUNT(
+	 [Dim Developer].[Dev Name].currentmember * [Dim Game Info].[Game Name].CHILDREN, 3, [Measures].[Total Revenue])) ON ROWS
+FROM [Steam_Analysis_v2]
+
+--CÂU 6: Thống kê doanh thu của các tựa game ra mắt từ năm 2020 - 2025 và Drill-down xuống cấp Quý (Quarter)
+SELECT
+    { [Measures].[Total Revenue] } ON COLUMNS,
+
+    DRILLDOWNLEVEL(
+        -- [Tập hợp]: Chọn khoảng thời gian từ 2020 đến 2025 trên cây phân cấp [Date]
+        { [Dim Time].[Date].[Year].&[2020] : [Dim Time].[Date].[Year].&[2025] }
+    ) ON ROWS
+
+FROM [Steam_Analysis_v2]
+
+
+--CÂU 7: Top 3 Độ tuổi (Required Age) theo Doanh thu
+SELECT
+    { [Measures].[Total Revenue] } ON COLUMNS,
+    TOPCOUNT(
+        [Dim Game Info].[Age Rating].children,
+        3,
+        [Measures].[Total Revenue]) ON ROWS
+FROM [Steam_Analysis_v2]
+
+--CÂU 8: Top 5 Game Free có lượng người sở hữu (Total Owners) cao nhất
+SELECT
+    [Measures].[Total Owners] ON COLUMNS,
+	TOPCOUNT(
+		FILTER([Dim Game Info].[Game Name].CHILDREN, [Measures].[Price] = 0), 
+		5, [Measures].[Total Owners] ) ON ROWS
+FROM [Steam_Analysis_v2]
+
+--CÂU 9: Tỷ lệ thất bại của Game Trả phí (Paid Games) theo Năm phát hành (2020-2024)
+WITH 
+    -- 1. Đếm số Game Trả phí (Price > 0) mà Doanh thu < 5000 (Thất bại)
+    MEMBER [Measures].[So Luong Paid Game That Bai] AS
+        COUNT(
+            FILTER(
+                EXISTING [Dim Game Info].[Game Name].CHILDREN, 
+                [Measures].[Total Revenue] < 5000 
+                AND [Measures].[Total Revenue] > 0 -- (Chỉ xét game tốn tiền mua)
+            )
+        )
+    -- 2. Đếm tổng số Game Trả phí đã phát hành (Mẫu số)
+    MEMBER [Measures].[Tong So Paid Game] AS
+        COUNT(
+            FILTER(
+                EXISTING [Dim Game Info].[Game Name].CHILDREN,
+                [Measures].[Total Revenue] > 0 -- (Mẫu số cũng chỉ đếm game tính phí)
+            )
+        )
+    -- 3. Tính Tỷ lệ phần trăm
+    MEMBER [Measures].[Ty Le That Bai] AS
+        IIF([Measures].[Tong So Paid Game] = 0, NULL,
+            ([Measures].[So Luong Paid Game That Bai] / [Measures].[Tong So Paid Game])
+        ), FORMAT_STRING = "Percent"
+SELECT
+    { 
+        [Measures].[So Luong Paid Game That Bai], 
+        [Measures].[Tong So Paid Game],
+        [Measures].[Ty Le That Bai]
+    } ON COLUMNS,
+    { [Date].[Year].&[2020] :[Dim Time].[Date].[Year].&[2024] } ON ROWS
+FROM [Steam_Analysis_v2]
+
+--Câu 10: Thống kê Số lượng game và Tổng doanh thu của các game có gán mác 18+ được ra mắt trong khoảng(2021-2024).
+SELECT
+    { [Measures].[Number of Games],  
+      [Measures].[Total Revenue]} 
+	  ON COLUMNS,
+NON EMPTY
+    (
+    { 
+        [Dim Time].[Date].[Year].&[2014] : [Dim Time].[Date].[Year].&[2024]}
+		*[Dim Genre].[Genre Name].children)
+    ON ROWS
+FROM [Steam_Analysis_v2]
+WHERE ([Dim Game Info].[Age Rating].&[18])	
+
+
+--BAO CAO 2/QUERY6  doanh thu cua cac game duoc ra mat theo tung quy tu 2014-2024
+
+SELECT
+    { 
+        [Measures].[Total Revenue], 
+        [Measures].[Number of Games] 
+    } ON COLUMNS,
+
+    NON EMPTY
+    (
+        -- Cột 1: Lấy thuộc tính NĂM (Attribute Year)
+        { [Dim Time].[Year].[Year].&[2014] : [Dim Time].[Year].[Year].&[2024] }
+        *
+        -- Cột 2: Lấy thuộc tính QUÝ (Attribute Quarter)
+        [Dim Time].[Quarter].[Quarter].MEMBERS
+    ) ON ROWS
+
+FROM [Steam_Analysis_v2]
+
+--BAO CAO 3/ QUERY 5  "TOP 5 NHÀ PHÁT TRIỂN VÀ CÙNG GAME CỦA NHÀ PHÁT TRIỂN HÀNG ĐẦU"
+SELECT
+    { 
+        [Measures].[Total Revenue] 
+       
+    } ON COLUMNS,
+
+    NON EMPTY
+    GENERATE(
+        -- 1. Lấy Top 5 Nhà phát triển (Developer) giàu nhất
+        TOPCOUNT(
+            [Dim Developer].[Dev Name].CHILDREN, 
+            5, 
+            [Measures].[Total Revenue]
+        ),
+        -- 2. Với mỗi Dev, CrossJoin để lấy Top 3 Game của họ
+        CROSSJOIN(
+            { [Dim Developer].[Dev Name].CurrentMember },
+            TOPCOUNT(
+                [Dim Game Info].[Game Name].CHILDREN, 
+                3, 
+                [Measures].[Total Revenue]
+            )
+        )
+    ) ON ROWS
+
+FROM [Steam_Analysis_v2]
+
+
+-- Câu 11: Top 10 Game Siêu phẩm (Rating > 90) ra mắt năm 2024 có doanh thu cao nhất.
+select 
+	{[Measures].[Total Revenue], [Measures].[User Rating]} on columns,
+	ORDER(
+	  TOPCOUNT(
+		FILTER([Dim Game Info].[Game Name].children, [Measures].[User Rating] >=90),
+		10, [Measures].[Total Revenue]),
+		[Measures].[User Rating],desc) on rows
+FROM [Steam_Analysis_v2]
+WHERE [Dim Time].[Year].&[2024]
+
+
+--Câu 12: Top 10 game có lượng người sở hữu (Total Owners) cao nhất từ các Nhà phát hành (Publishers) uy tín (User rating > 80)
+SELECT 
+	{[Measures].[Total Owners], [Measures].[User Rating]} on columns,
+	TOPCOUNT(
+		NONEMPTY(
+			FILTER(
+				[Dim Publisher].[Pub Name].CHILDREN,
+				[Measures].[User Rating] > 80
+				  ) 
+        * [Dim Game Info].[Game Name].CHILDREN,
+        [Measures].[Total Owners]
+				),
+				 10, 
+			 [Measures].[Total Owners]
+			) on rows
+FROM [Steam_Analysis_v2]
