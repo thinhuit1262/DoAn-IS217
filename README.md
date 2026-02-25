@@ -84,6 +84,10 @@ Hệ thống được thiết kế theo mô hình **Star Schema** (Lược đồ
 ![BieuDo1](images/BieuDo(1).png)
 ![BieuDo1](images/BieuDo(1).png)
 
+---
+## Link
+Dataset: https://drive.google.com/drive/folders/1e-GS8FcUtq3Rz0kb9OvKUP_bnrJBJCX4?usp=sharing
+Database: https://drive.google.com/drive/folders/1_IrFO8EZvZ3U89E_pexIyIKxNnyr3o1A?usp=drive_link
 
 ---
 
