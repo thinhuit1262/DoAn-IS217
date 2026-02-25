@@ -72,17 +72,18 @@ Hệ thống được thiết kế theo mô hình **Star Schema** (Lược đồ
 ## 📈 Kết quả đạt được (Screenshots)
 
 ### 1. Luồng xử lý SSIS (ETL Flow)
-*[Chèn hình ảnh Control Flow/Data Flow trong SSIS của bạn vào đây]*
+![SSIS(1)](images/SSIS(1).png)
+![SSIS(2)](images/SSIS(2).png)
+![SSIS(3)](images/SSIS(3).png)
+![SSIS(4)](images/SSIS(4).png)
 
-### 2. Dashboard báo cáo (Power BI)
-*[Chèn hình ảnh biểu đồ Power BI của bạn vào đây]*
+### 2. SSAS khối Cube
+![KhoiCube](images/Cube.png)
 
----
+### 3. Dashboard báo cáo (Power BI)
+![BieuDo1](images/BieuDo(1).png)
+![BieuDo1](images/BieuDo(1).png)
 
-## 👥 Thành viên thực hiện (Contributors)
-
-* **[Tên Bạn - GitHub Link]**: Data Warehouse Architect, ETL (SSIS), OLAP, Mining.
-* **[Tên Bạn Của Bạn]**: Data Analyst, Python Pre-processing (Boxleiter & Soft-cap Algo).
 
 ---
 
